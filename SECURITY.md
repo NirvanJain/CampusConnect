@@ -17,6 +17,7 @@ If you discover a vulnerability, **do NOT open a public issue.** Instead, please
 **[INSERT MAINTAINER EMAIL HERE]**
 
 Please include the following in your report:
+
 - A description of the vulnerability
 - Steps to reproduce it
 - Any potential impact on user data or the platform

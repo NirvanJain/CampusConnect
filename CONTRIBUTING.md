@@ -5,6 +5,7 @@ Welcome to **CampusConnect**! We are thrilled to have you here. This project is 
 ## 📋 Prerequisites
 
 Before you begin, make sure you have the following installed:
+
 - **Node.js** (v18 or higher recommended)
 - **Bun** (`curl -fsSL https://bun.sh/install | bash`)
 - **Supabase CLI** (if you need to run or test backend migrations locally)
@@ -16,6 +17,7 @@ Before you begin, make sure you have the following installed:
    Click the "Fork" button at the top right of this repository to create your own copy.
 
 2. **Clone Your Fork**
+
    ```bash
    git clone https://github.com/YOUR_USERNAME/CampusConnect.git
    cd CampusConnect
@@ -26,6 +28,7 @@ Before you begin, make sure you have the following installed:
    - `feature/your-feature-name` (for new features)
    - `fix/your-bug-fix` (for bug fixes)
    - `docs/your-docs-update` (for documentation)
+
    ```bash
    git checkout -b feature/awesome-new-feature
    ```
@@ -41,11 +44,13 @@ Before you begin, make sure you have the following installed:
    - `style:` (Formatting, missing semi colons, etc; no code change)
    - `refactor:` (Refactoring production code)
    - `test:` (Adding tests, refactoring test; no production code change)
+
    ```bash
    git commit -m "feat: add user profile page skeleton"
    ```
 
 6. **Push to Your Fork**
+
    ```bash
    git push origin feature/awesome-new-feature
    ```
@@ -63,14 +68,17 @@ Before you begin, make sure you have the following installed:
 ## 💅 Code Style
 
 This project uses **ESLint** and **Prettier**. Please run the lint command before committing your code to ensure it matches the project's style guidelines:
+
 ```bash
 bun run lint
 ```
-*(Optionally configure your editor to format on save).*
+
+_(Optionally configure your editor to format on save)._
 
 ## 🙋‍♂️ How to Claim an Issue
 
 To prevent duplicate work:
+
 1. Find an issue you want to work on (look for the `good-first-issue` label if you're new!).
 2. Leave a comment saying: **"I'd like to work on this!"**
 3. **Wait for a maintainer to assign you** to the issue before starting your work.
@@ -84,6 +92,6 @@ To prevent duplicate work:
 ## 💬 Communication Channel
 
 Got questions? Need help? Join the discussion!
-**[👉 Join the ECSoC Project Discord / Slack Here]** *(Maintainer: Add actual link here)*
+**[👉 Join the ECSoC Project Discord / Slack Here]** _(Maintainer: Add actual link here)_
 
 Thank you for contributing! 🚀

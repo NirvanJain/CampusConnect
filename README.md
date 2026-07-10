@@ -12,19 +12,21 @@ CampusConnect solves the chaos of college clubs juggling WhatsApp groups, spread
 <!-- ![CampusConnect Demo](./public/demo.gif) -->
 
 ## ✨ Features
-* **Event Management:** Create, manage, and promote campus events.
-* **RSVP + QR Check-in:** Seamless registration and fast, verifiable QR code check-ins.
-* **Club Directory:** Discover and join various campus clubs in one centralized place.
-* **Discussion Feed:** Engage with the community through club-specific discussion boards.
-* **Certificate Generation:** Automatically generate and distribute event certificates.
-* **Realtime Updates:** Instant notifications and live updates powered by Supabase Realtime.
+
+- **Event Management:** Create, manage, and promote campus events.
+- **RSVP + QR Check-in:** Seamless registration and fast, verifiable QR code check-ins.
+- **Club Directory:** Discover and join various campus clubs in one centralized place.
+- **Discussion Feed:** Engage with the community through club-specific discussion boards.
+- **Certificate Generation:** Automatically generate and distribute event certificates.
+- **Realtime Updates:** Instant notifications and live updates powered by Supabase Realtime.
 
 ## 🛠️ Tech Stack
-| Category | Technology |
-| :--- | :--- |
-| **Frontend** | Vite, React, TypeScript, Tailwind CSS |
-| **Backend** | Supabase (Postgres, Auth, Storage, Realtime) |
-| **Package Manager** | Bun |
+
+| Category            | Technology                                   |
+| :------------------ | :------------------------------------------- |
+| **Frontend**        | Vite, React, TypeScript, Tailwind CSS        |
+| **Backend**         | Supabase (Postgres, Auth, Storage, Realtime) |
+| **Package Manager** | Bun                                          |
 
 ## 🚀 Getting Started
 
@@ -52,20 +54,25 @@ CampusConnect solves the chaos of college clubs juggling WhatsApp groups, spread
    ```
 
 ## 📁 Project Structure
-* `src/` — Contains all frontend React components, pages, hooks, and utilities.
-* `supabase/` — Database migrations, seed data, and Edge Functions.
-* `public/` — Static assets like images and fonts.
+
+- `src/` — Contains all frontend React components, pages, hooks, and utilities.
+- `supabase/` — Database migrations, seed data, and Edge Functions.
+- `public/` — Static assets like images and fonts.
 
 ## 🤝 Contributing
+
 We welcome contributions! Please see our [CONTRIBUTING.md](./CONTRIBUTING.md) for details on how to get started. This is an **ECSoC 2026** project, so we are actively looking for contributors. Check out issues labeled `good-first-issue` to begin!
 
 ## 🗺️ Roadmap
-* **Phase 1:** Core web platform ✅
-* **Phase 2:** Contributor feature build (In Progress)
-* **Phase 3:** AI layer (Q4 2026) — AI event recommender, AI post summarizer, RAG chatbot via pgvector
+
+- **Phase 1:** Core web platform ✅
+- **Phase 2:** Contributor feature build (In Progress)
+- **Phase 3:** AI layer (Q4 2026) — AI event recommender, AI post summarizer, RAG chatbot via pgvector
 
 ## 📄 License
+
 This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details.
 
 ## 👤 Maintainer
+
 **Krushit Prajapati** - [GitHub Profile](https://github.com/krushit1307)
