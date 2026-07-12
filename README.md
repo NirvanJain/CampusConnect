@@ -110,16 +110,16 @@ erDiagram
 
 ### Tables
 
-| Table           | Key columns                                                                 | Purpose                                                                 |
-| :--------------- | :--------------------------------------------------------------------------- | :------------------------------------------------------------------------ |
-| `profiles`       | `id` (PK, = `auth.users.id`), `full_name`, `avatar_url`, `college`, `bio`, `role` | One row per authenticated user; auto-created by the `on_auth_user_created` trigger on signup. |
-| `clubs`          | `id` (PK), `name`, `slug` (unique), `description`, `banner_url`, `logo_url`, `created_by` → `profiles.id` | A campus club/society. `slug` is used for the public `/clubs/:slug` route. |
-| `club_members`   | `id` (PK), `club_id` → `clubs.id`, `user_id` → `profiles.id`, `role`, `status` | Join table linking users to clubs, with a `member`/`admin` role and a `pending`/`approved` status. Unique per `(club_id, user_id)`. |
-| `events`         | `id` (PK), `club_id` → `clubs.id`, `title`, `description`, `event_date`, `location`, `created_by` → `profiles.id` | An event hosted by a club. |
-| `event_rsvps`    | `id` (PK), `event_id` → `events.id`, `user_id` → `profiles.id`, `checked_in` | A user's RSVP to an event, plus a `checked_in` flag set on QR check-in. Unique per `(event_id, user_id)`. |
-| `posts`          | `id` (PK), `club_id` → `clubs.id`, `author_id` → `profiles.id`, `content` | A discussion post on a club's feed. |
-| `comments`       | `id` (PK), `post_id` → `posts.id`, `author_id` → `profiles.id`, `content` | A reply to a post. |
-| `certificates`   | `id` (PK), `event_id` → `events.id`, `user_id` → `profiles.id`, `certificate_url` | A generated certificate issued to a user for attending an event. |
+| Table          | Key columns                                                                                                       | Purpose                                                                                                                             |
+| :------------- | :---------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------------------------------------------------------- |
+| `profiles`     | `id` (PK, = `auth.users.id`), `full_name`, `avatar_url`, `college`, `bio`, `role`                                 | One row per authenticated user; auto-created by the `on_auth_user_created` trigger on signup.                                       |
+| `clubs`        | `id` (PK), `name`, `slug` (unique), `description`, `banner_url`, `logo_url`, `created_by` → `profiles.id`         | A campus club/society. `slug` is used for the public `/clubs/:slug` route.                                                          |
+| `club_members` | `id` (PK), `club_id` → `clubs.id`, `user_id` → `profiles.id`, `role`, `status`                                    | Join table linking users to clubs, with a `member`/`admin` role and a `pending`/`approved` status. Unique per `(club_id, user_id)`. |
+| `events`       | `id` (PK), `club_id` → `clubs.id`, `title`, `description`, `event_date`, `location`, `created_by` → `profiles.id` | An event hosted by a club.                                                                                                          |
+| `event_rsvps`  | `id` (PK), `event_id` → `events.id`, `user_id` → `profiles.id`, `checked_in`                                      | A user's RSVP to an event, plus a `checked_in` flag set on QR check-in. Unique per `(event_id, user_id)`.                           |
+| `posts`        | `id` (PK), `club_id` → `clubs.id`, `author_id` → `profiles.id`, `content`                                         | A discussion post on a club's feed.                                                                                                 |
+| `comments`     | `id` (PK), `post_id` → `posts.id`, `author_id` → `profiles.id`, `content`                                         | A reply to a post.                                                                                                                  |
+| `certificates` | `id` (PK), `event_id` → `events.id`, `user_id` → `profiles.id`, `certificate_url`                                 | A generated certificate issued to a user for attending an event.                                                                    |
 
 ### Notes
 
