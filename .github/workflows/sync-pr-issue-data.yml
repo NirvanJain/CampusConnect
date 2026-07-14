@@ -2,11 +2,10 @@ name: Sync Issue Data to Merged PR
 
 on:
   pull_request_target:
-    types: [closed]
+    types: [opened, edited, synchronize, reopened]
 
 jobs:
   sync-labels-and-assignees:
-    if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     permissions:
       pull-requests: write
