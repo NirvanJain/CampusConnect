@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import { createClient } from "@/lib/supabase/client";
 import type { User } from "@supabase/supabase-js";
 import { ThemeToggle } from "../ThemeToggle";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 
 const links = [
   { to: "/events", label: "Events" },
@@ -36,10 +37,7 @@ export function Navbar() {
         </Link>
         <nav className="hidden items-center gap-6 md:flex">
           {links.map((l) => {
-            const isActive =
-              l.to === "/"
-                ? currentPath === "/"
-                : currentPath === l.to || currentPath.startsWith(l.to + "/");
+            const isActive = currentPath === l.to || currentPath.startsWith(l.to + "/");
 
             return (
               <Link
@@ -68,19 +66,12 @@ export function Navbar() {
           ) : (
             <Link
               to="/auth"
-              className="neu-border neu-press bg-black px-4 py-2 font-mono text-xs font-bold uppercase text-cream hover:bg-cream hover:text-black"
+              className="neu-border neu-press bg-black px-4 py-2 font-mono text-xs font-bold uppercase text-cream hover:bg-cream hover:text-black dark:bg-cream dark:text-black dark:hover:bg-black dark:hover:text-cream"
               style={{ letterSpacing: "0.08em" }}
             >
               Sign in
             </Link>
           )}
-          <Link
-            to="/auth"
-            className="neu-border neu-press bg-black px-4 py-2 font-mono text-xs font-bold uppercase text-cream hover:bg-cream hover:text-black dark:bg-cream dark:text-black dark:hover:bg-black dark:hover:text-cream"
-            style={{ letterSpacing: "0.08em" }}
-          >
-            Sign in
-          </Link>
         </div>
       </div>
     </header>
@@ -102,18 +93,23 @@ function NotificationBell() {
 
   return (
     <div ref={ref} className="relative">
-      <button
-        onClick={() => setOpen((o) => !o)}
-        className="relative flex h-8 w-8 items-center justify-center rounded-full border-2 border-black bg-white transition-colors hover:bg-lime"
-        aria-label="Notifications"
-      >
-        🔔
-        {notifications.length > 0 && (
-          <span className="absolute -right-1 -top-1 flex h-4 w-4 items-center justify-center rounded-full border border-black bg-peach font-mono text-[9px] font-bold">
-            {notifications.length}
-          </span>
-        )}
-      </button>
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <button
+            onClick={() => setOpen((o) => !o)}
+            className="relative flex h-8 w-8 items-center justify-center rounded-full border-2 border-black bg-white transition-colors hover:bg-lime"
+            aria-label="Notifications"
+          >
+            🔔
+            {notifications.length > 0 && (
+              <span className="absolute -right-1 -top-1 flex h-4 w-4 items-center justify-center rounded-full border border-black bg-peach font-mono text-[9px] font-bold">
+                {notifications.length}
+              </span>
+            )}
+          </button>
+        </TooltipTrigger>
+        <TooltipContent>Notifications</TooltipContent>
+      </Tooltip>
 
       {open && (
         <div className="neu-border absolute right-0 top-10 z-50 w-72 bg-white">
