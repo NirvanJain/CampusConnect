@@ -1,6 +1,6 @@
 import { formatDate } from "@/lib/utils";
 import { FormEvent, useState } from "react";
-import { X } from "lucide-react";
+import { Check, Share2, X } from "lucide-react";
 import { toast } from "sonner";
 import { ConfirmModal } from "@/components/ui/confirm-modal";
 
@@ -32,11 +32,25 @@ export function EventCard({ event, index, user, onRsvpToggle, isRsvpPending }: E
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [studentId, setStudentId] = useState("");
   const [dietaryPreference, setDietaryPreference] = useState("");
+  const [copied, setCopied] = useState(false);
 
   const resetForm = () => {
     setStudentId("");
     setDietaryPreference("");
     setIsFormOpen(false);
+  };
+
+  const handleShare = async () => {
+    const shareUrl = `${window.location.origin}${window.location.pathname}#event-${event.id}`;
+
+    try {
+      await navigator.clipboard.writeText(shareUrl);
+      setCopied(true);
+      toast.success("Link copied to clipboard!");
+      window.setTimeout(() => setCopied(false), 2000);
+    } catch (err) {
+      toast.error("Failed to copy link");
+    }
   };
 
   const handleRsvpClick = () => {
@@ -68,10 +82,24 @@ export function EventCard({ event, index, user, onRsvpToggle, isRsvpPending }: E
   const [confirmOpen, setConfirmOpen] = useState(false);
 
   return (
-    <article className={`neu-border p-5 ${colors[index % colors.length]}`}>
-      <p className="font-mono text-xs font-bold uppercase tracking-wider">
-        {event.event_date ? formatDate(event.event_date).split(" at ")[0].toUpperCase() : "TBA"}
-      </p>
+    <article id={`event-${event.id}`} className={`neu-border p-5 ${colors[index % colors.length]}`}>
+      <div className="flex items-start justify-between gap-3">
+        <p className="font-mono text-xs font-bold uppercase tracking-wider">
+          {event.event_date ? formatDate(event.event_date).split(" at ")[0].toUpperCase() : "TBA"}
+        </p>
+        <button
+          type="button"
+          onClick={handleShare}
+          aria-label="Copy event link"
+          className="neu-border neu-press grid h-8 w-8 shrink-0 place-items-center bg-white"
+        >
+          {copied ? (
+            <Check aria-hidden="true" size={14} strokeWidth={3} />
+          ) : (
+            <Share2 aria-hidden="true" size={14} strokeWidth={3} />
+          )}
+        </button>
+      </div>
 
       <p className="mt-3 font-mono text-xs font-bold uppercase">Event</p>
       <h2 className="mt-1 text-2xl font-black">{event.title}</h2>
