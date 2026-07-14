@@ -7,8 +7,8 @@ import {
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
-import { ArrowLeft, Home, MapPinned } from "lucide-react";
 import { useEffect, type ReactNode } from "react";
+import { ArrowLeft, Home, MapPinned } from "lucide-react";
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { ScrollToTop } from "@/components/ScrollToTop";
@@ -64,6 +64,44 @@ function NotFoundComponent() {
   );
 }
 
+function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
+  console.error(error);
+  const router = useRouter();
+  useEffect(() => {
+    reportLovableError(error, { boundary: "tanstack_root_error_component" });
+  }, [error]);
+
+  return (
+    <div className="flex min-h-screen items-center justify-center bg-background px-4">
+      <div className="max-w-md text-center">
+        <h1 className="text-xl font-semibold tracking-tight text-foreground">
+          This page didn&apos;t load
+        </h1>
+        <p className="mt-2 text-sm text-muted-foreground">
+          Something went wrong on our end. You can try refreshing or head back home.
+        </p>
+
+        <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center">
+          <button
+            type="button"
+            onClick={() => reset()}
+            className="neu-border neu-press inline-flex items-center justify-center gap-2 bg-black px-5 py-3 font-mono text-xs font-bold uppercase tracking-wider text-cream"
+          >
+            Try again
+          </button>
+          <Link
+            to="/"
+            className="neu-border neu-press inline-flex items-center justify-center gap-2 bg-white px-5 py-3 font-mono text-xs font-bold uppercase tracking-wider"
+          >
+            <Home className="h-4 w-4" strokeWidth={2.5} />
+            Go home
+          </Link>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export const Route = createRootRouteWithContext<{
   queryClient: QueryClient;
 }>()({
@@ -78,7 +116,19 @@ export const Route = createRootRouteWithContext<{
   notFoundComponent: NotFoundComponent,
   shellComponent: RootShell,
   component: RootComponent,
+  errorComponent: ErrorComponent,
 });
+
+function SkipToContent() {
+  return (
+    
+      href="#main-content"
+      className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:border-2 focus:border-black focus:bg-lime focus:px-4 focus:py-2 focus:font-mono focus:text-sm focus:font-bold focus:uppercase focus:tracking-wide focus:shadow-[4px_4px_0_0_#000] focus:outline-none"
+    >
+      Skip to content
+    </a>
+  );
+}
 
 function RootShell({ children }: { children: ReactNode }) {
   return (
@@ -88,6 +138,7 @@ function RootShell({ children }: { children: ReactNode }) {
       </head>
       <body>
         <TooltipProvider delayDuration={200}>
+          <SkipToContent />
           {children}
           <Toaster />
           <ScrollToTop />
