@@ -109,9 +109,37 @@ export const Route = createRootRouteWithContext<{
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "CampusConnect" },
+      { title: "CampusConnect Hub" },
+      {
+        name: "description",
+        content:
+          "Open-source community and event management platform for college clubs and tech communities. Run events, grow clubs, issue certificates.",
+      },
+      { name: "author", content: "CampusConnect" },
+      { property: "og:title", content: "CampusConnect Hub" },
+      {
+        property: "og:description",
+        content:
+          "Open-source community and event management for college clubs and tech communities.",
+      },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:site", content: "@CampusConnect" },
     ],
-    links: [{ rel: "stylesheet", href: appCss }],
+    links: [
+      {
+        rel: "stylesheet",
+        href: appCss,
+      },
+      { rel: "icon", href: "/favicon.png", type: "image/png" },
+      { rel: "apple-touch-icon", href: "/favicon.png", type: "image/png" },
+      { rel: "preconnect", href: "https://fonts.googleapis.com" },
+      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap",
+      },
+    ],
   }),
   notFoundComponent: NotFoundComponent,
   shellComponent: RootShell,
@@ -121,7 +149,7 @@ export const Route = createRootRouteWithContext<{
 
 function SkipToContent() {
   return (
-    
+    <a
       href="#main-content"
       className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:border-2 focus:border-black focus:bg-lime focus:px-4 focus:py-2 focus:font-mono focus:text-sm focus:font-bold focus:uppercase focus:tracking-wide focus:shadow-[4px_4px_0_0_#000] focus:outline-none"
     >
