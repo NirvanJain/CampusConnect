@@ -98,6 +98,43 @@ export function EventCard({ event, index, user, onRsvpToggle, isRsvpPending }: E
   };
   const [confirmOpen, setConfirmOpen] = useState(false);
 
+  const [isFormOpen, setIsFormOpen] = useState(false);
+  const [studentId, setStudentId] = useState("");
+  const [dietaryPreference, setDietaryPreference] = useState("");
+
+  const resetForm = () => {
+    setStudentId("");
+    setDietaryPreference("");
+    setIsFormOpen(false);
+  };
+
+  const handleRsvpClick = () => {
+    if (!user) {
+      toast.error("Please log in to RSVP");
+      return;
+    }
+
+    if (hasRsvpd) {
+      onRsvpToggle(event.id, true);
+      return;
+    }
+
+    setIsFormOpen(true);
+  };
+
+  const handleSubmit = (formEvent: FormEvent<HTMLFormElement>) => {
+    formEvent.preventDefault();
+
+    const form = formEvent.currentTarget;
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+
+    onRsvpToggle(event.id, false);
+    resetForm();
+  };
+
   return (
     <article id={`event-${event.id}`} className={`neu-border p-5 ${colors[index % colors.length]}`}>
       <div className="flex items-start justify-between gap-3">
